@@ -1,0 +1,13 @@
+[project]
+name = "ijarachi-bot"
+version = "0.1.0"
+authors = [
+    {name = "Ulug'bek G'ozixonov",email = "ulugbekgozixonov@gmail.com"}
+]
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+]
+
+[tool.poetry]
+package-mode = false
