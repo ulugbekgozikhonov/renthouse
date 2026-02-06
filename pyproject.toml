@@ -14,12 +14,17 @@ package-mode = false
 [tool.poetry.group.dev.dependencies]
 pre-commit = "^4.5.1"
 ruff = "^0.15.0"
-mypy = "^1.19.1"
 py-mon = "^2.2.0"
 python-dotenv = "^1.2.1"
+pyright = "^1.1.408"
 
 [tool.ruff.lint]
 select = ["E", "F", "UP", "B", "SIM", "I"]
 
-[tool.mypy]
-strict = true
+[tool.pyright]
+venvPath = "."
+venv = ".venv"
+include = ["src"]
+exclude = ["**/.venv", "**/__pycache__"]
+pythonVersion = "3.13"
+typeCheckingMode = "standard"
