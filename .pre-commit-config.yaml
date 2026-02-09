@@ -6,6 +6,12 @@ repos:
       - id: end-of-file-fixer
       - id: trailing-whitespace
 
+  - repo: https://github.com/python-poetry/poetry
+    rev: "2.2.1"
+    hooks:
+      - id: poetry-check
+      - id: poetry-lock
+
   - repo: https://github.com/astral-sh/ruff-pre-commit
     rev: v0.9.6
     hooks:
@@ -13,8 +19,7 @@ repos:
         args: [--fix]
       - id: ruff-format
 
-  - repo: https://github.com/pre-commit/mirrors-mypy
-    rev: "v1.14.1"
+  - repo: https://github.com/RobertCraigie/pyright-python
+    rev: v1.1.408
     hooks:
-      - id: mypy
-        args: ["--config-file=pyproject.toml"]
+      - id: pyright
