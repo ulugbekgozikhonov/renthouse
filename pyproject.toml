@@ -25,6 +25,5 @@ select = ["E", "F", "UP", "B", "SIM", "I"]
 venvPath = "."
 venv = ".venv"
 include = ["src"]
-exclude = ["**/.venv", "**/__pycache__"]
 pythonVersion = "3.13"
-typeCheckingMode = "standard"
+typeCheckingMode = "strict"

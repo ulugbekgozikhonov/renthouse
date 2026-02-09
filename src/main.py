@@ -10,7 +10,7 @@ def on_startup():
 
 async def main():
     dp.startup.register(on_startup)
-    await dp.start_polling(bot)
+    await dp.start_polling(bot)  # type: ignore
 
 
 asyncio.run(main())
