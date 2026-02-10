@@ -1,5 +1,5 @@
 from aiogram import Bot
 
-from config import BOT_TOKEN
+from settings import settings
 
-bot = Bot(token=BOT_TOKEN)
+bot = Bot(token=settings.bot_token)
