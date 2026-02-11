@@ -1,0 +1,20 @@
+msgid "welcome"
+msgstr "Salom, {name}! Botimizga xush kelibsiz."
+
+msgid "start_help"
+msgstr "Tilni o'zgartirish uchun /language buyrug'ini ishlating."
+
+msgid "language_select"
+msgstr "Tilni tanlang:"
+
+msgid "language_changed"
+msgstr "Til o'zgartirildi: {locale}"
+
+msgid "btn_language"
+msgstr "Tilni o'zgartirish"
+
+msgid "btn_uz"
+msgstr "O'zbekcha"
+
+msgid "btn_en"
+msgstr "English"
