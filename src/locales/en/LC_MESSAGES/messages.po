@@ -1,0 +1,20 @@
+msgid "welcome"
+msgstr "Hello, {name}! Welcome to the bot."
+
+msgid "start_help"
+msgstr "Use /language to change language."
+
+msgid "language_select"
+msgstr "Select language:"
+
+msgid "language_changed"
+msgstr "Language changed to: {locale}"
+
+msgid "btn_language"
+msgstr "Change language"
+
+msgid "btn_uz"
+msgstr "O'zbekcha"
+
+msgid "btn_en"
+msgstr "English"
