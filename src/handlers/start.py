@@ -1,6 +1,7 @@
 from aiogram.types import Message
-from aiogram.utils.i18n import gettext
+
+from messages import MessageService
 
 
-async def start_handler(msg: Message):
-    await msg.answer(gettext("start_message"))
+async def start_handler(msg: Message, messages: MessageService):
+    await msg.answer(messages.start_message())
