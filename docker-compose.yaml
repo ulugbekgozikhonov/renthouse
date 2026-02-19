@@ -2,11 +2,21 @@ services:
   postgres:
     image: postgres:18-alpine
     environment:
-      POSTGRES_PASSWORD: ${POSTGRES_URL}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
     ports:
       - 5432:5432
     volumes:
       - postgres_data:/var/lib/postgresql
+
+  pgadmin:
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL}
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD}
+      PGADMIN_CONFIG_MASTER_PASSWORD_REQUIRED: "False"
+      PGADMIN_CONFIG_SERVER_MODE: "False"
+    ports:
+      - 5050:80
 
   redis:
     image: redis:8-alpine
@@ -16,6 +26,14 @@ services:
     volumes:
       - redis_data:/data
 
+  redisinsight:
+    image: redis/redisinsight
+    ports:
+      - 5540:5540
+    volumes:
+      - redisinsight_data:/data
+
 volumes:
   postgres_data:
   redis_data:
+  redisinsight_data:
