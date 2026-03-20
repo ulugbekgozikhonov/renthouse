@@ -1,5 +1,5 @@
 __pycache__
+.ruff_cache
 
 .venv
-.ruff_cache
 .env

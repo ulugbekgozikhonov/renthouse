@@ -7,4 +7,4 @@ WORKDIR /app
 COPY pyproject.toml poetry.lock ./
 RUN poetry install
 COPY . .
-CMD [ "poetry", "run", "watchfiles", "python src/main.py" ]
+CMD [ "poetry", "run", "watchfiles", "python src/main.py", "src", "alembic", "locales" ]
