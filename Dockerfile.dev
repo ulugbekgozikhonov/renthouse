@@ -1,0 +1,10 @@
+FROM python:3.13-slim
+RUN apt update && apt install -y curl
+RUN curl -sSL https://install.python-poetry.org | python3 -
+ENV PATH=$PATH:/root/.local/bin
+ENV PYTHONUNBUFFERED=1
+WORKDIR /app
+COPY pyproject.toml poetry.lock ./
+RUN poetry install
+COPY . .
+CMD [ "poetry", "run", "watchfiles", "python src/main.py", "src", "alembic", "locales" ]

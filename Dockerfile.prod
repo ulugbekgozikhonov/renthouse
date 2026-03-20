@@ -1,0 +1,10 @@
+FROM python:3.13-slim
+RUN apt update && apt install -y curl && rm -rf /var/lib/apt/lists
+RUN curl -sSL https://install.python-poetry.org | python3 -
+ENV PATH=$PATH:/root/.local/bin
+ENV PYTHONUNBUFFERED=1
+WORKDIR /app
+COPY pyproject.toml poetry.lock ./
+RUN poetry install --only main --no-root
+COPY . .
+CMD [ "poetry", "run", "python", "src/main.py" ]
