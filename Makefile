@@ -16,8 +16,11 @@ dev-alembic-migrate:
 
 
 # production commands
+prod-compose-pull:
+	docker compose -f docker-compose.prod.yaml pull
+
 prod-compose-up:
-	docker compose -f docker-compose.prod.yaml up -d
+	docker compose -f docker-compose.prod.yaml up -d --remove-orphans
 
 prod-compose-down:
 	docker compose -f docker-compose.prod.yaml down
