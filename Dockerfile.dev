@@ -1,5 +1,5 @@
 FROM python:3.13-slim
-RUN apt update && apt install -y curl
+RUN apt-get update && apt-get install -y curl
 RUN curl -sSL https://install.python-poetry.org | python3 -
 ENV PATH=$PATH:/root/.local/bin
 ENV PYTHONUNBUFFERED=1

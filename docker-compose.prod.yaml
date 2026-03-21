@@ -6,15 +6,23 @@ services:
       POSTGRES_URL: postgresql+asyncpg://postgres:${POSTGRES_PASSWORD}@postgres:5432/postgres
       REDIS_URL: redis://default:${REDIS_PASSWORD}@redis:6379/0
     depends_on:
-      - postgres
-      - redis
-      - migration
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+      migration:
+        condition: service_completed_successfully
     restart: always
 
   postgres:
     image: postgres:18-alpine
     environment:
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
     volumes:
       - postgres_data:/var/lib/postgresql
     restart: always
@@ -22,14 +30,22 @@ services:
   migration:
     image: ghcr.io/ulugbekgozikhonov/renthouse:main
     environment:
+      BOT_TOKEN: ${BOT_TOKEN}
       POSTGRES_URL: postgresql+asyncpg://postgres:${POSTGRES_PASSWORD}@postgres:5432/postgres
+      REDIS_URL: redis://default:${REDIS_PASSWORD}@redis:6379/0
     depends_on:
-      - postgres
+      postgres:
+        condition: service_healthy
     command: [ "poetry", "run", "alembic", "upgrade", "head" ]
 
   redis:
     image: redis:8-alpine
     command: [ "redis-server", "--requirepass", "${REDIS_PASSWORD}" ]
+    healthcheck:
+      test: [ "CMD", "redis-cli", "ping" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
     volumes:
       - redis_data:/data
     restart: always
