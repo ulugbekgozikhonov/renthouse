@@ -20,4 +20,4 @@ msgstr ""
 
 #: src/handlers/start.py:6
 msgid "start_message"
-msgstr "botga xush kelibsiz"
+msgstr "botga xush kelibsiz 😍"
