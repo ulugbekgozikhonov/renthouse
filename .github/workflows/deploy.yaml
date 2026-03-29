@@ -43,6 +43,6 @@ jobs:
           ssh ${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }} "
           cd ${{ secrets.VPS_APP_DIR }} && 
           git pull origin main && 
-          make prod-compose-pull && 
-          make prod-compose-up
+          docker compose -f docker-compose.prod.yaml pull && 
+          docker compose -f docker-compose.prod.yaml up -d --remove-orphans
           "

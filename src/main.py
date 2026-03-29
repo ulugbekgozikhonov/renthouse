@@ -1,12 +1,15 @@
 import asyncio
 
+from aiogram import Bot
+
 from bot import bot
 from database import engine, redis
 from dispatcher import dp
 
 
-def on_startup():
-    print("Bot is started...")
+async def on_startup(bot: Bot):
+    me = await bot.get_me()
+    print(f"https://t.me/{me.username} is started...")
 
 
 async def on_shutdown():

@@ -39,4 +39,4 @@ prod-compose-down:
 	docker compose -f docker-compose.prod.yaml down
 
 prod-compose-logs:
-	docker compose -f docker-compose.prod.yaml logs
+	docker compose -f docker-compose.prod.yaml logs -f
