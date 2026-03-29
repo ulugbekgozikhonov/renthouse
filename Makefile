@@ -15,7 +15,7 @@ dev-alembic-migrate:
 	docker compose -f docker-compose.dev.yaml exec renthousebot poetry run alembic upgrade head
 
 dev-locale-extract:
-	docker compose -f docker-compose.dev.yaml exec renthousebot poetry run pybabel extract -k _:1,1t -k _:1,2 -k __ --input-dirs=. -o locales/messages.pot
+	docker compose -f docker-compose.dev.yaml exec renthousebot poetry run pybabel extract -k _:1,1t -k _:1,2 -k __ --input-dirs=src -o locales/messages.pot
 
 dev-locale-init:
 	docker compose -f docker-compose.dev.yaml exec renthousebot poetry run pybabel init -i locales/messages.pot -d locales -D messages -l en
@@ -23,7 +23,7 @@ dev-locale-init:
 	docker compose -f docker-compose.dev.yaml exec renthousebot poetry run pybabel init -i locales/messages.pot -d locales -D messages -l uz
 
 dev-locale-update:
-	docker compose -f docker-compose.dev.yaml exec renthousebot poetry run pybabel update -d locales -D messages -i locales/messages.pot
+	docker compose -f docker-compose.dev.yaml exec renthousebot poetry run pybabel update --no-fuzzy-matching -d locales -D messages -i locales/messages.pot
 
 dev-locale-compile:
 	docker compose -f docker-compose.dev.yaml exec renthousebot poetry run pybabel compile -d locales -D messages
