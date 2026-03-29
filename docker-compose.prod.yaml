@@ -20,7 +20,7 @@ services:
     environment:
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
     healthcheck:
-      test: [ "CMD-SHELL", "pg_isready -U postgres" ]
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
       interval: 5s
       timeout: 5s
       retries: 5
@@ -31,19 +31,20 @@ services:
   migration:
     image: ghcr.io/ulugbekgozikhonov/renthouse:main
     environment:
+      PYTHON_ENV: production
       BOT_TOKEN: ${BOT_TOKEN}
       POSTGRES_URL: postgresql+asyncpg://postgres:${POSTGRES_PASSWORD}@postgres:5432/postgres
       REDIS_URL: redis://default:${REDIS_PASSWORD}@redis:6379/0
     depends_on:
       postgres:
         condition: service_healthy
-    command: [ "poetry", "run", "alembic", "upgrade", "head" ]
+    command: ["poetry", "run", "alembic", "upgrade", "head"]
 
   redis:
     image: redis:8-alpine
-    command: [ "redis-server", "--requirepass", "${REDIS_PASSWORD}" ]
+    command: ["redis-server", "--requirepass", "${REDIS_PASSWORD}"]
     healthcheck:
-      test: [ "CMD", "redis-cli", "-a", "${REDIS_PASSWORD}", "ping" ]
+      test: ["CMD", "redis-cli", "-a", "${REDIS_PASSWORD}", "ping"]
       interval: 5s
       timeout: 5s
       retries: 5
